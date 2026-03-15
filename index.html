@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugar Juntos - Espacio Terapéutico</title>
+    <meta name="description" content="Espacio terapéutico interdisciplinario en Villa Sarmiento, Morón. Psicología, Psicopedagogía, Fonoaudiología, Terapia Ocupacional, Musicoterapia y más.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'amarillo': '#F5C518',
+                        'amarillo-light': '#FFF3C4',
+                        'amarillo-dark': '#D4A810',
+                        'violeta': '#7B2D8E',
+                        'violeta-light': '#E8D5F0',
+                        'violeta-dark': '#5A1D6B',
+                        'dark-green': '#2E4A3E',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('img/hero-fachada.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner,
+        .flip-card:focus .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #F5C518;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(123, 45, 142, 0.15);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .float-btn {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-white text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
+            <a href="#inicio" class="flex items-center gap-2">
+                <img src="img/logo.jpg" alt="Jugar Juntos Logo" class="h-12 md:h-16 rounded-full">
+                <span class="font-bold text-violeta text-lg md:text-xl hidden sm:block">Jugar Juntos</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                <a href="#sobre-nosotros" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Quiénes Somos</a>
+                <a href="#servicios" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Servicios</a>
+                <a href="#ubicacion" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Ubicación</a>
+                <a href="#galeria" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Galería</a>
+                <a href="#contacto" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Contacto</a>
+            </nav>
+            <!-- Mobile menu button -->
+            <button id="menu-btn" class="md:hidden text-violeta focus:outline-none" aria-label="Abrir menú">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t shadow-lg">
+            <nav class="flex flex-col px-4 py-3 space-y-2">
+                <a href="#sobre-nosotros" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Quiénes Somos</a>
+                <a href="#servicios" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Servicios</a>
+                <a href="#ubicacion" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Ubicación</a>
+                <a href="#galeria" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Galería</a>
+                <a href="#contacto" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-16 md:pt-20">
+
+        <!-- Hero -->
+        <section id="inicio" class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-4">
+            <img src="img/logo.jpg" alt="Jugar Juntos" class="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-amarillo shadow-xl mb-6">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">Jugar Juntos</h1>
+            <p class="text-xl md:text-2xl text-amarillo-light font-medium mb-2 drop-shadow">Espacio Terapéutico</p>
+            <p class="text-lg text-white/90 max-w-2xl mt-4 drop-shadow">Acompañamiento interdisciplinario para la infancia y la discapacidad en Villa Sarmiento, Morón</p>
+            <a href="#contacto" class="mt-8 inline-flex items-center gap-2 bg-amarillo hover:bg-amarillo-dark text-violeta-dark font-semibold px-8 py-3 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-300 text-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Contactanos
+            </a>
+        </section>
+
+        <!-- Sobre Nosotros -->
+        <section id="sobre-nosotros" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-violeta">Quiénes Somos</h2>
+                <div class="w-16 h-1 bg-amarillo mx-auto mb-12 rounded-full"></div>
+                <p class="text-lg text-center max-w-3xl mx-auto mb-16 text-gray-700 leading-relaxed">
+                    Somos dos profesionales de la salud y también hermanos, Licenciados en Psicología, especializados en discapacidad e infancia.
+                    Creamos <strong class="text-violeta">Jugar Juntos</strong> como un espacio donde el juego y la terapia se encuentran,
+                    con un equipo interdisciplinario que incluye fonoaudiología, terapia ocupacional, psicopedagogía, kinesiología y musicoterapia.
+                </p>
+
+                <!-- Fundadores -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <!-- Fundador 1 -->
+                    <div class="flip-card w-full h-[420px] md:h-[480px] cursor-pointer" tabindex="0">
+                        <div class="flip-card-inner relative w-full h-full">
+                            <div class="flip-card-front absolute w-full h-full rounded-xl shadow-lg overflow-hidden bg-white flex flex-col">
+                                <div class="w-full h-64 md:h-72 overflow-hidden">
+                                    <img src="img/fundadores-6.jpg" alt="Fundadores de Jugar Juntos" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-6 text-center flex-grow flex flex-col justify-center">
+                                    <h3 class="text-xl font-bold text-violeta mb-1">Lic. en Psicología</h3>
+                                    <p class="text-gray-600">Co-fundador</p>
+                                    <p class="text-sm text-amarillo-dark mt-2 md:hidden">(Tocá para más info)</p>
+                                    <p class="text-sm text-amarillo-dark mt-2 hidden md:block">(Hover para más info)</p>
+                                </div>
+                            </div>
+                            <div class="flip-card-back absolute w-full h-full rounded-xl shadow-lg overflow-hidden bg-violeta-light p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold text-violeta mb-4">Formación y experiencia</h3>
+                                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                                    <li>Licenciado en Psicología</li>
+                                    <li>Especialización en infancia y discapacidad</li>
+                                    <li>Terapia Cognitivo Conductual (TCC)</li>
+                                    <li>Evaluaciones psicológicas</li>
+                                    <li>Co-fundador de Jugar Juntos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fundadora 2 -->
+                    <div class="flip-card w-full h-[420px] md:h-[480px] cursor-pointer" tabindex="0">
+                        <div class="flip-card-inner relative w-full h-full">
+                            <div class="flip-card-front absolute w-full h-full rounded-xl shadow-lg overflow-hidden bg-white flex flex-col">
+                                <div class="w-full h-64 md:h-72 overflow-hidden">
+                                    <img src="img/fundadores-5.jpg" alt="Fundadores de Jugar Juntos" class="w-full h-full object-cover object-top">
+                                </div>
+                                <div class="p-6 text-center flex-grow flex flex-col justify-center">
+                                    <h3 class="text-xl font-bold text-violeta mb-1">Lic. en Psicología</h3>
+                                    <p class="text-gray-600">Co-fundadora</p>
+                                    <p class="text-sm text-amarillo-dark mt-2 md:hidden">(Tocá para más info)</p>
+                                    <p class="text-sm text-amarillo-dark mt-2 hidden md:block">(Hover para más info)</p>
+                                </div>
+                            </div>
+                            <div class="flip-card-back absolute w-full h-full rounded-xl shadow-lg overflow-hidden bg-amarillo-light p-6 flex flex-col justify-center">
+                                <h3 class="text-xl font-bold text-violeta mb-4">Formación y experiencia</h3>
+                                <ul class="list-disc list-inside space-y-2 text-sm text-gray-700">
+                                    <li>Licenciada en Psicología</li>
+                                    <li>Especialización en infancia y discapacidad</li>
+                                    <li>Terapia Cognitivo Conductual (TCC)</li>
+                                    <li>Evaluaciones psicológicas</li>
+                                    <li>Co-fundadora de Jugar Juntos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Servicios -->
+        <section id="servicios" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-violeta">Nuestros Servicios</h2>
+                <div class="w-16 h-1 bg-amarillo mx-auto mb-12 rounded-full"></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+                    <!-- Psicología -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-amarillo">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-amarillo-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7B2D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Psicología (TCC)</h3>
+                        <p class="text-gray-600 text-sm">Acompañamiento terapéutico individual para niños, adolescentes y familias.</p>
+                    </div>
+
+                    <!-- Psicopedagogía -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-violeta">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-violeta-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Psicopedagogía</h3>
+                        <p class="text-gray-600 text-sm">Evaluación y tratamiento de dificultades de aprendizaje.</p>
+                    </div>
+
+                    <!-- Terapia Ocupacional -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-amarillo">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-amarillo-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7B2D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"></path><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"></path><path d="M14.5 17.5 4.5 15"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Terapia Ocupacional</h3>
+                        <p class="text-gray-600 text-sm">Desarrollo de habilidades para la vida diaria y la autonomía.</p>
+                    </div>
+
+                    <!-- Fonoaudiología -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-violeta">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-violeta-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Fonoaudiología</h3>
+                        <p class="text-gray-600 text-sm">Tratamiento de trastornos de la comunicación y el lenguaje.</p>
+                    </div>
+
+                    <!-- Kinesiología -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-amarillo">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-amarillo-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7B2D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Kinesiología</h3>
+                        <p class="text-gray-600 text-sm">Rehabilitación y desarrollo motor para el bienestar físico.</p>
+                    </div>
+
+                    <!-- Musicoterapia -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-violeta">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-violeta-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Musicoterapia</h3>
+                        <p class="text-gray-600 text-sm">Uso de la música para el bienestar emocional y cognitivo.</p>
+                    </div>
+
+                    <!-- Habilidades Sociales -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-amarillo">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-amarillo-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7B2D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Habilidades Sociales</h3>
+                        <p class="text-gray-600 text-sm">Grupos y talleres para el desarrollo de herramientas de interacción.</p>
+                    </div>
+
+                    <!-- Evaluaciones -->
+                    <div class="service-card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 border-t-4 border-violeta">
+                        <div class="w-16 h-16 mx-auto mb-4 bg-violeta-light rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-bold text-violeta mb-2">Evaluaciones Psicológicas</h3>
+                        <p class="text-gray-600 text-sm">Diagnóstico integral para orientar el tratamiento adecuado.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Atención -->
+        <section class="py-16 md:py-20 bg-gradient-to-r from-amarillo via-amarillo-light to-amarillo">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7B2D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" x2="9.01" y1="9" y2="9"></line><line x1="15" x2="15.01" y1="9" y2="9"></line></svg>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-violeta-dark">Atención a Pacientes</h2>
+                <p class="text-lg md:text-xl max-w-2xl mx-auto text-violeta-dark leading-relaxed">
+                    Acompañamos cada proceso con compromiso y calidez. Trabajamos con niños, adolescentes y sus familias,
+                    tanto de forma particular como a través de obras sociales.
+                </p>
+            </div>
+        </section>
+
+        <!-- Ubicación -->
+        <section id="ubicacion" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-violeta">Ubicación</h2>
+                <div class="w-16 h-1 bg-amarillo mx-auto mb-12 rounded-full"></div>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="rounded-xl overflow-hidden shadow-xl">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.8!2d-58.53!3d-34.64!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDM4JzI0LjAiUyA1OMKwMzEnNDguMCJX!5e0!3m2!1ses!2sar!4v1"
+                            width="100%"
+                            height="400"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Ubicación de Jugar Juntos">
+                        </iframe>
+                    </div>
+                    <div class="text-center md:text-left space-y-6">
+                        <div class="flex items-start gap-4 justify-center md:justify-start">
+                            <div class="w-12 h-12 bg-amarillo-light rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7B2D8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-violeta">Villa Sarmiento, Morón</h3>
+                                <p class="text-gray-600 mt-1">Zona Oeste, Buenos Aires</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 justify-center md:justify-start">
+                            <div class="w-12 h-12 bg-violeta-light rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-violeta">WhatsApp</h3>
+                                <a href="https://wa.me/5491168373847" class="text-amarillo-dark hover:text-violeta transition-colors text-lg">11 6837 3847</a>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/SeVNSnMj4n23J9Vr7" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-violeta hover:bg-violeta-dark text-white font-semibold px-6 py-3 rounded-lg shadow-md transform hover:scale-105 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            Ver en Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería -->
+        <section id="galeria" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-violeta">Nuestro Espacio</h2>
+                <div class="w-16 h-1 bg-amarillo mx-auto mb-12 rounded-full"></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src="img/musicoterapia.jpg" class="w-full h-full object-cover transition-transform duration-300" alt="Sesión de musicoterapia">
+                    </div>
+                    <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src="img/terapia-juego.jpg" class="w-full h-full object-cover transition-transform duration-300" alt="Terapia a través del juego">
+                    </div>
+                    <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src="img/ninos-jugando.jpg" class="w-full h-full object-cover transition-transform duration-300" alt="Niños jugando en el espacio">
+                    </div>
+                    <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src="img/equipo-grupal.jpg" class="w-full h-full object-cover transition-transform duration-300" alt="Equipo de profesionales">
+                    </div>
+                    <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src="img/mural.jpg" class="w-full h-full object-cover transition-transform duration-300" alt="Mural colorido del espacio">
+                    </div>
+                    <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
+                        <img src="img/inflable.jpg" class="w-full h-full object-cover transition-transform duration-300" alt="Espacio de juegos">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacto -->
+        <section id="contacto" class="py-16 md:py-24 bg-gradient-to-r from-violeta via-violeta-dark to-violeta">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#F5C518" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white">Contacto y Turnos</h2>
+                <p class="text-lg md:text-xl max-w-xl mx-auto mb-8 text-white/90 leading-relaxed">
+                    Los turnos se coordinan por WhatsApp. Escribinos y te respondemos a la brevedad.
+                </p>
+                <a href="https://wa.me/5491168373847?text=Hola!%20Me%20contacto%20desde%20la%20web%20de%20Jugar%20Juntos.%20Quisiera%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-10 py-4 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-300 text-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    Solicitar Turno por WhatsApp
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.instagram.com/jugar.juntos/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-gray-300 hover:text-amarillo transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                </a>
+                <a href="https://wa.me/5491168373847" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-gray-300 hover:text-green-400 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </a>
+            </div>
+            <p class="text-sm">&copy; 2026 Jugar Juntos - Espacio Terapéutico. Todos los derechos reservados.</p>
+            <p class="text-xs text-gray-500 mt-2">Villa Sarmiento, Morón - Buenos Aires</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/5491168373847?text=Hola!%20Me%20contacto%20desde%20la%20web%20de%20Jugar%20Juntos." target="_blank" rel="noopener noreferrer" class="float-btn fixed bottom-6 right-6 z-50 p-4 bg-green-500 text-white rounded-full shadow-xl hover:bg-green-600 transition-all duration-300 hover:scale-110" aria-label="Contactar por WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Header shadow on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
+                header.classList.remove('shadow-md');
+            } else {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+
+</body>
+</html>
