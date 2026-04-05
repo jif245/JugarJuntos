@@ -47,6 +47,72 @@
       "medicalSpecialty": ["Psychiatric", "Pediatric"]
     }
     </script>
+
+    <!-- Schema.org FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Dónde están ubicados?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tenemos dos sedes en Villa Sarmiento, Morón (Zona Oeste de Buenos Aires): Gelly y Obes 807 y Emilio Mitre 687."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Trabajan con obras sociales?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí. Atendemos de forma particular y también a través de obras sociales para pacientes con Certificado Único de Discapacidad (CUD)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué enfoque terapéutico utilizan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Trabajamos con un enfoque cognitivo-conductual orientado a los desafíos del neurodesarrollo: TEA (autismo), TDAH, dificultades de aprendizaje, lenguaje y comunicación."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué tipos de evaluaciones realizan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Realizamos evaluaciones ADOS-2 (diagnóstico de TEA), ADI-R, evaluaciones neuropsicológicas infantiles y perfil sensorial. Nuestros profesionales están certificados en ADOS-2 y ADI-R."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué especialidades atienden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Equipo interdisciplinario: psicología infantil y adolescente, psicopedagogía, fonoaudiología, terapia ocupacional, kinesiología, musicoterapia, habilidades sociales y evaluaciones psicológicas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿A partir de qué edad atienden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Atendemos desde los 6 meses hasta los 18 años."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo es la primera consulta?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La primera entrevista de admisión es virtual y sin costo. En este primer encuentro conocemos a la familia, entendemos la consulta y definimos juntos el abordaje más adecuado."
+          }
+        }
+      ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -130,6 +196,7 @@
                 <a href="#servicios" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Servicios</a>
                 <a href="#ubicacion" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Ubicación</a>
                 <a href="#galeria" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Galería</a>
+                <a href="#faq" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">FAQ</a>
                 <a href="#contacto" class="nav-link text-violeta-dark hover:text-amarillo-dark px-3 py-2 text-sm lg:text-base">Contacto</a>
             </nav>
             <button id="menu-btn" class="md:hidden text-violeta focus:outline-none" aria-label="Abrir menú">
@@ -147,6 +214,7 @@
                 <a href="#servicios" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Servicios</a>
                 <a href="#ubicacion" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Ubicación</a>
                 <a href="#galeria" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">Galería</a>
+                <a href="#faq" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2 border-b border-gray-100">FAQ</a>
                 <a href="#contacto" class="mobile-link text-violeta-dark hover:text-amarillo-dark py-2">Contacto</a>
             </nav>
         </div>
@@ -440,6 +508,98 @@
                     <div class="gallery-item aspect-square rounded-xl overflow-hidden shadow-lg">
                         <img src="img/img_2081.webp" class="w-full h-full object-cover transition-transform duration-300" alt="Vista del logo en el vidrio del espacio">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-violeta">Preguntas Frecuentes</h2>
+                <div class="w-16 h-1 bg-amarillo mx-auto mb-12 rounded-full"></div>
+                <div class="max-w-3xl mx-auto space-y-4">
+
+                    <details class="group bg-violeta-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿Dónde están ubicados?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            Tenemos dos sedes en Villa Sarmiento, Morón (Zona Oeste de Buenos Aires):
+                            <ul class="mt-2 space-y-1 list-disc list-inside">
+                                <li><strong>Gelly y Obes 807</strong>, Villa Sarmiento, Morón</li>
+                                <li><strong>Emilio Mitre 687</strong>, Villa Sarmiento, Morón</li>
+                            </ul>
+                        </div>
+                    </details>
+
+                    <details class="group bg-amarillo-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿Trabajan con obras sociales?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            Sí. Atendemos de forma <strong>particular</strong> y también a través de <strong>obras sociales</strong> para pacientes con <strong>Certificado Único de Discapacidad (CUD)</strong>. Escribinos por WhatsApp para consultar por tu obra social específica.
+                        </div>
+                    </details>
+
+                    <details class="group bg-violeta-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿Qué enfoque terapéutico utilizan?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            Trabajamos con un <strong>enfoque cognitivo-conductual</strong> orientado a los desafíos del neurodesarrollo: trastorno del espectro autista (TEA), TDAH, dificultades de aprendizaje, lenguaje y comunicación. Cada tratamiento se adapta a las necesidades del niño y su familia.
+                        </div>
+                    </details>
+
+                    <details class="group bg-amarillo-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿Qué tipos de evaluaciones realizan?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            Realizamos evaluaciones diagnósticas integrales, entre ellas:
+                            <ul class="mt-2 space-y-1 list-disc list-inside">
+                                <li><strong>ADOS-2</strong> — Evaluación estandarizada para diagnóstico de TEA (autismo)</li>
+                                <li><strong>ADI-R</strong> — Entrevista diagnóstica para autismo</li>
+                                <li><strong>Evaluaciones neuropsicológicas infantiles</strong></li>
+                                <li><strong>Perfil sensorial</strong></li>
+                            </ul>
+                            Nuestros profesionales están certificados en ADOS-2 y ADI-R.
+                        </div>
+                    </details>
+
+                    <details class="group bg-violeta-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿Qué especialidades atienden?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            Somos un equipo interdisciplinario que incluye: <strong>psicología infantil y adolescente, psicopedagogía, fonoaudiología, terapia ocupacional, kinesiología, musicoterapia, habilidades sociales y evaluaciones psicológicas</strong>.
+                        </div>
+                    </details>
+
+                    <details class="group bg-amarillo-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿A partir de qué edad atienden?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            Atendemos <strong>desde los 6 meses hasta los 18 años</strong>. Para consultas sobre casos específicos, escribinos por WhatsApp.
+                        </div>
+                    </details>
+
+                    <details class="group bg-violeta-light rounded-xl shadow-sm overflow-hidden">
+                        <summary class="cursor-pointer p-5 font-semibold text-violeta flex justify-between items-center list-none">
+                            <span>¿Cómo es la primera consulta?</span>
+                            <svg class="w-5 h-5 transition-transform group-open:rotate-180 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </summary>
+                        <div class="px-5 pb-5 text-gray-700 leading-relaxed">
+                            La primera entrevista de admisión es <strong>virtual y sin costo</strong>. En este primer encuentro conocemos a la familia, entendemos la consulta y definimos juntos el abordaje más adecuado. Podés coordinarla por WhatsApp.
+                        </div>
+                    </details>
+
                 </div>
             </div>
         </section>
