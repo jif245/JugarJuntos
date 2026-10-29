@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jugarjuntos.netlify.app/sitemap.xml
+Sitemap: https://jugarjuntos.com.ar/sitemap.xml
